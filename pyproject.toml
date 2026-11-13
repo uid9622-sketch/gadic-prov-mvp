@@ -1,0 +1,11 @@
+[project]
+name = "gadic-prov-mvp"
+version = "0.2.0"
+description = "GADIC-PROV-MVP-001: Global Trusted Creation & Data Provenance Prototype (MVP)"
+requires-python = ">=3.10"
+dependencies = ["cryptography>=42"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# 🧬 #龍芯⚡️丙午·己亥·壬辰·癸卯·䷟恒-文档-创建-50c86b7e

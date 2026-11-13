@@ -1,0 +1,3 @@
+GADIC-PROV-MVP-001 synthetic work sample #1 (demo, not a real work)
+line-02
+line-03

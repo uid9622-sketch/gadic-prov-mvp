@@ -1,0 +1,1 @@
+{"note":"DEMO policy; key distribution channel is out-of-band in production","policy_version":"1","require_tsa":false,"trusted_log_key_ids":["9e783c6eb3839fb03106c3b408a3cf301413d6d9f0cbd29052d3a081fbed0565"],"trusted_signer_key_ids":["b2a848a0c9a1d5b2e94285218707f248e33d4356295d1d9d5c37bc21e1507c80"]}
