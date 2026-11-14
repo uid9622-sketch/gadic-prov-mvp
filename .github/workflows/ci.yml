@@ -21,22 +21,34 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: 安装依赖（pytest + cryptography）
-        run: python -m pip install --upgrade pip && python -m pip install cryptography pytest
-
-      - name: 环境体检（annotation 直出，未登录可见）
+      - name: 安装依赖（锁版本·可复现）
         run: |
-          echo "::error::PY=$(python --version 2>&1) CWD=$(pwd) TESTS=$(ls tests/ | tr '\n' ' ')"
-          echo "::error::IMPORT_GPROV=$(PYTHONPATH=src python -c 'import gprov; print("OK", gprov.__file__)' 2>&1 | tail -1)"
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-ci.txt
+          echo "::notice::INSTALLED=$(python -m pip list 2>/dev/null | grep -iE '^(cryptography|pytest) ' | tr '\n' ' ')"
+
+      - name: 环境体检（notice 直出，不污染告警）
+        run: |
+          echo "::notice::PY=$(python --version 2>&1)"
+          echo "::notice::WHICH_PY=$(command -v python || echo MISSING)"
+          echo "::notice::CWD=$(pwd)"
+          echo "::notice::TESTS=$(ls tests/ | tr '\n' ' ')"
+          echo "::notice::PYTEST=$(python -m pytest --version 2>&1 | head -1)"
+          echo "::notice::CRYPTO=$(python -c 'import cryptography; print(cryptography.__version__)' 2>&1 | tail -1)"
+          echo "::notice::IMPORT_GPROV=$(PYTHONPATH=src python -c 'import gprov; print("OK", gprov.__file__)' 2>&1 | tail -1)"
 
       - name: 测试全绿（基线 22 用例）
         run: |
           set -o pipefail
-          python -m pytest tests/ -q 2>&1 | tee pytest-output.log || {
-            ERR=$(tail -25 pytest-output.log | tr '\n' '|' | tr '%' ' ')
-            echo "::error::PYTEST_TAIL:: $ERR"
+          python -m pytest tests/ -q 2>&1 | tee pytest-output.log
+          rc=${PIPESTATUS[0]}
+          if [ "$rc" -ne 0 ]; then
+            echo "::error::pytest exited rc=$rc"
+            echo "----- pytest output (last 40 lines) -----"
+            tail -40 pytest-output.log
+            echo "----- end pytest output -----"
             exit 1
-          }
+          fi
 
       - name: 完整性自校验（SHA-256 清单）
         run: sha256sum -c SHA256SUMS.sha256

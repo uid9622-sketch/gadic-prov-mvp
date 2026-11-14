@@ -1,0 +1,7 @@
+# CI 依赖锁 —— 2026-11-14 加
+# 起因：原 ci.yml 用 `pip install cryptography pytest` 不锁版本 ⇒
+#       runner 每次装当天最新 ⇒ 今天过、明天挂（不可复现）。
+# 范围：本地验证过 3.12.15 + cryptography 50.0.0 + pytest 9.1.1 全绿。
+#       用区间而不是精确钉死，避免上游发安全补丁后无法自动升级。
+cryptography>=42,<51
+pytest>=8,<10
