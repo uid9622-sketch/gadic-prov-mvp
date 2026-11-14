@@ -1,6 +1,6 @@
 # 🧬 #龍芯⚡️丙午·己亥·壬辰·癸卯·䷟恒-文档-创建-828da68e
 # GADIC-PROV-MVP-001 文件 SHA-256 清单（校验: sha256sum -c SHA256SUMS.sha256）
-85b4a12429787cbbcc918e2e2f98867e0f22aa2ecdf279ba5aef29110da94df2  .github/workflows/ci.yml
+d94594c5b661605891c8b60b503327159cb8149e18dbf3cf81d9572e58d3251d  .github/workflows/ci.yml
 30aa48cb42dd37bc960907e25c8a26e22aa08138716975b8c77c53533147896d  .gitignore
 38accab6246e822df69874b957955cc994548660929d0c7e01d923fe4717a563  CONTRIBUTING.md
 1a9fc8c32a5084faa6e4b6aa57fc1fc4091973f2284aacd190e26705dc7d8bd7  LICENSE-NOTICE.md
@@ -24,6 +24,7 @@ a5a3b4876faa39775c86e064f013dbd9ece2059c923f04f771d7226ef3b468ec  keys/gadic-log
 869e0c0219c79c085a0edf631d21a7f5247a34f169361efdbb3d02d06a942686  reports/hashes-2026-11-14.json
 c690d01894b01960435c4a8bbd43b5e74e2f309cf2546a6a0e9f174ebe233752  reports/run-report-2026-11-14.md
 65b10ad6723660f0158ca5f42bdf74f2763890321307f71154cd0083643b8d4d  reports/verification-report.json
+fc385cbade73d7edf9adbbf6129f66e3af69f36f3aa4283f159add9b7dee75f4  requirements-ci.txt
 9546de0aef2744bfea0c15132926062fff78e7fb40699ad014ffeacdae5f9f8a  scripts/check_dna.py
 d2ba5928f1cc92ed4c1908757d1228344828ca446b9682ddd5a97404e05165bb  scripts/demo_e2e.py
 8ea3168b0ebcd2a50aeb9073540b1d9c95c9bda061557739be371b249c3a2d7a  scripts/notion_scan.py
